@@ -56,7 +56,7 @@ function compile(text) {
       script.resolveNames();
       script.validate();
       var binaryOutput = script.toBinary({log: true});
-      outputEl.textContent = binaryOutput.log;
+      outputEl.textContent = '[0x'+Array.from(binaryOutput.buffer.values()).map(v => v.toString(16)).join(', 0x') + ']';
       binaryBuffer = binaryOutput.buffer;
       var blob = new Blob([binaryOutput.buffer]);
       if (binaryBlobUrl) {
